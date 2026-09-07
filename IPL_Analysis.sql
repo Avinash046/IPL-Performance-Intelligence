@@ -15,7 +15,7 @@ SELECT
 	GROUP BY TEAM1
 	ORDER BY WIN_RATE_PCT DESC
 
--- Q3. Toss impact — does winning the toss help win the match?
+-- Q3. Toss impact â€” does winning the toss help win the match?
 SELECT
 	TOSS_DECISION,
 	COUNT(*) AS TOTAL_MATCHES,
@@ -253,7 +253,7 @@ WITH team_stats AS (
         SUM(CASE WHEN result = 'runs' THEN result_margin ELSE 0 END) AS total_run_margin,
         SUM(CASE WHEN result = 'wickets' THEN result_margin ELSE 0 END) AS total_wicket_margin
     FROM matches
-    WHERE winner IS NOT NULL
+    WHERE winner IS NOT NULL AND winner != 'NA'
     GROUP BY winner
 )
 SELECT 
